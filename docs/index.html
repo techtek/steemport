@@ -1,434 +1,1238 @@
 <!DOCTYPE HTML>
 <!--
-	Fractal by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Fractal by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>SteemPi</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-	</head>
-	<body id="top">
+<head>
+    <title>Steemit Widgets</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/uikit.almost-flat.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link rel="stylesheet" href="assets/css/custom.css"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
+    <link rel="icon" href="images/steemit-logo.png" />
+</head>
+<body id="top">
 
-		<!-- Header -->
-			<header id="header">
-				<div class="content">
-					<h1><a href="#">SteemPi</a></h1>
-					<p>TV-box software for (raspberry) Pi Single board computers, that connects with the Steem blockchain <a href="http://html5up.net">HTML5 UP</a></p>
-					<ul class="actions">
-						<li><a href="#" class="button special icon fa-download">Download</a></li>
-						<li><a href="#one" class="button icon fa-chevron-down scrolly">Learn More</a></li>
-					</ul>
-				</div>
-				<div class="image phone"><div class="inner"><img src="images/SteemPi_Raspberry_Pi_2_Line_draw.png" alt="" /></div></div>
-			</header>
+<!-- Header -->
+<header id="header">
+    <div class="content">
+        <img src="./images/steemit-logo.png"/>
+        <h1><a href="#">Steemit Widgets</a></h1>
+        <p>A simple way to display content<br>from <a href="https://steemit.com">steemit.com</a> on your website.</p>
+        <ul class="actions">
+            <li><a href="generator.html" class="button special icon fa-magic">Generator</a></li>
+        </ul>
+        <ul class="actions">
+            <li><a href="https://github.com/mktcode/steemit-widgets/archive/master.zip" class="button icon fa-download">Download</a>
+            </li>
+            <li><a href="#demo" class="button icon fa-eye scrolly">Demo</a></li>
+            <li><a href="#how-to-use" class="button icon fa-info scrolly">How To Use</a></li>
+        </ul>
+        <ul class="actions">
+            <li><a href="#templating" class="button tiny scrolly">Templating</a></li>
+            <li><a href="#options-placeholders" class="button tiny scrolly">Options and Placeholders</a></li>
+            <li><a href="#formatting-post-dates" class="button tiny scrolly">Formatting Post Dates</a></li>
+            <li><a href="#jquery-usage" class="button tiny scrolly">jQuery Usage</a></li>
+        </ul>
+    </div>
+</header>
 
-		<!-- One -->
-			<section id="one" class="wrapper style2 special">
-				<header class="major">
-					<h2>Sed ipsum magna lorem tempus amet<br />
-					vehicula et gravida elementum</h2>
-				</header>
-				<ul class="icons major">
-					<li><span class="icon fa-camera-retro"><span class="label">Shoot</span></span></li>
-					<li><span class="icon fa-refresh"><span class="label">Process</span></span></li>
-					<li><span class="icon fa-cloud"><span class="label">Upload</span></span></li>
-				</ul>
-			</section>
+<!-- One -->
+<section id="demo" class="wrapper style2 special">
+    <header class="major">
+        <h2>Demo</h2>
+    </header>
+    <p>
+        The following demos show how it might look like with some custom styling (using <a
+            href="https://getuikit.com/v2/">UIKit</a>).<br>
+        There are no styles applied out of the box but feel free to copy the styles from this demos.
+    </p>
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid" data-uk-grid-margin>
+            <div class="uk-width-medium-1-2">
+                <h3>User Profile</h3>
+                <div id="steemit-profile"><span class="fa fa-spinner fa-spin" style="color: #fff;"></span></div>
+            </div>
+            <div class="uk-width-medium-1-2">
+                <h3>Currency Ticker</h3>
+                <div id="steemit-ticker"><span class="fa fa-spinner fa-spin" style="color: #fff;"></span></div>
+                <a href="https://coinmarketcap.com" class="uk-text-small uk-text-muted">(coinmarketcap.com)</a>
+            </div>
+            <div class="uk-width-1-1">
+                <h3 class="uk-margin-large-top">User Blog</h3>
+                <div id="steemit-blog" class="uk-grid"><span class="fa fa-spinner fa-spin uk-padding-remove"
+                                                             style="color: #ccc; margin: 0 auto;"></span></div>
+            </div>
+            <div class="uk-width-1-1">
+                <h3 class="uk-margin-large-top">User Feed</h3>
+                <div id="steemit-feed" class="uk-grid"><span class="fa fa-spinner fa-spin uk-padding-remove"
+                                                             style="color: #ccc; margin: 0 auto;"></span></div>
+            </div>
+            <div class="uk-width-large-1-3 uk-width-medium-1-2">
+                <h3 class="uk-margin-large-top">New in Steemdev</h3>
+                <div id="steemit-new"><span class="fa fa-spinner fa-spin" style="color: #ccc;"></span></div>
+            </div>
+            <div class="uk-width-large-1-3 uk-width-medium-1-2">
+                <h3 class="uk-margin-large-top">Hot in Programming</h3>
+                <div id="steemit-hot"><span class="fa fa-spinner fa-spin" style="color: #ccc;"></span></div>
+            </div>
+            <div class="uk-width-large-1-3 uk-width-medium-1-2">
+                <h3 class="uk-margin-large-top">Trending (All)</h3>
+                <div id="steemit-trending"><span class="fa fa-spinner fa-spin" style="color: #ccc;"></span></div>
+            </div>
+            <div class="uk-width-1-1">
+                <h3 class="uk-margin-large-top">Full Post</h3>
+                <div id="steemit-full-post"><span class="fa fa-spinner fa-spin" style="color: #ccc;"></span></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-		<!-- Two -->
-			<section id="two" class="wrapper">
-				<div class="inner alt">
-					<section class="spotlight">
-						<div class="image"><img src="images/pic01.jpg" alt="" /></div>
-						<div class="content">
-							<h3>Magna sed ultrices</h3>
-							<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
-						</div>
-					</section>
-					<section class="spotlight">
-						<div class="image"><img src="images/pic02.jpg" alt="" /></div>
-						<div class="content">
-							<h3>Ultrices nullam aliquam</h3>
-							<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
-						</div>
-					</section>
-					<section class="spotlight">
-						<div class="image"><img src="images/pic03.jpg" alt="" /></div>
-						<div class="content">
-							<h3>Aliquam sed magna</h3>
-							<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
-						</div>
-					</section>
-					<section class="special">
-						<ul class="icons labeled">
-							<li><span class="icon fa-camera-retro"><span class="label">Ipsum lorem accumsan</span></span></li>
-							<li><span class="icon fa-refresh"><span class="label">Sed vehicula elementum</span></span></li>
-							<li><span class="icon fa-cloud"><span class="label">Elit fusce consequat</span></span></li>
-							<li><span class="icon fa-code"><span class="label">Lorem nullam tempus</span></span></li>
-							<li><span class="icon fa-desktop"><span class="label">Adipiscing amet sapien</span></span></li>
-						</ul>
-					</section>
-				</div>
-			</section>
+<!-- Two -->
+<section id="how-to-use" class="wrapper">
+    <header class="major">
+        <h2>How To Use</h2>
+    </header>
+    <div class="uk-container uk-container-center">
+        <p>
+            The easiest way is to use the <a href="https://mktcode.github.io/steemit-widgets/generator.html">generator</a>. You can adjust a lot there but if you need an even more individual solution keep reading.
+        </p>
+        <p>
+            First you need to decide where to put the content. You only need an empty element with an id somewhere on
+            your website.
+        </p>
+        <pre><code class="html">&lt;h1&gt;My Steemit Blog&lt;/h1&gt;
+&lt;div id=&quot;my-blog&quot;&gt;&lt;/div&gt;</code></pre>
+        <p>
+            Now add the necessary files to your website. You only need the <a
+                href="https://github.com/steemit/steem-js">javascript API for Steemit</a> and the plugin itself.
+            You don't have to download anything if you use the CDN links in the code below. Just copy these lines and
+            paste them right before your closing <code>&lt;/body&gt;</code> tag.
+        </p>
+        <pre><code class="html">&lt;script src=&quot;https://cdn.steemjs.com/lib/latest/steem.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://mktcode.github.io/steemit-widgets/assets/js/steemit-widgets.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+        <p>
+            Next you need to initialize the widget you want. All the widget functions are accessible through the <code>steemitWidgets</code>
+            object.
+            In this example we'll use the <code>blog()</code> function to display your blog posts.
+        </p>
+        <pre><code class="html">&lt;script&gt;
+  steemitWidgets.blog({
+    element: 'my-blog',
+    user: 'your-username'
+  });
+&lt;/script&gt;</code></pre>
+        <p>Put together your html file might look like this:</p>
+        <pre><code class="html">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Website&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My Steemit Blog&lt;/h1&gt;
+    &lt;div id=&quot;my-blog&quot;&gt;&lt;/div&gt;
 
-		<!-- Three -->
-			<section id="three" class="wrapper style2 special">
-				<header class="major">
-					<h2>Magna leo sapien gravida</h2>
-					<p>Gravida at leo elementum elit fusce accumsan dui libero, quis vehicula<br />
-					lectus ultricies eu. In convallis amet leo sapien iaculis efficitur.</p>
-				</header>
-				<ul class="actions">
-					<li><a href="#" class="button special icon fa-download">Download</a></li>
-					<li><a href="#" class="button">Learn More</a></li>
-				</ul>
-			</section>
+    &lt;script src=&quot;https://cdn.steemjs.com/lib/latest/steem.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://mktcode.github.io/steemit-widgets/assets/js/steemit-widgets.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      steemitWidgets.blog({
+        element: 'my-blog',
+        user: 'your-username'
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p>
+            This will display a simple list of links to your blog posts along with the number of upvotes, comments and
+            payout.<br>
+        </p>
+    </div>
+</section>
 
-		<!-- Four -->
-		<!--
-			<section id="four" class="wrapper">
-				<div class="inner">
+<section id="templating" class="wrapper">
+    <header class="major">
+        <h2>Templating</h2>
+    </header>
+    <div class="uk-container uk-container-center">
+        <p>
+            To adjust the display you can use a custom template with some placeholders for the content from steemit.
+            There are two options to provide a template.
+            You can pass the html directly to the <code>template</code> option like this:
+        </p>
+        <pre><code class="html">&lt;script&gt;
+  steemitWidgets.blog({
+    element: 'my-blog',
+    user: 'your-username',
+    template: '&lt;div class="post"&gt;&lt;a href=&quot;${URL}&quot;&gt;${TITLE}&lt;/a&gt;&lt;br&gt;${Payout}, ${UPVOTES} Upvotes, ${COMMENTS} Comments&lt;/div&gt;'
+  });
+&lt;/script&gt;</code></pre>
+        <p>
+            The second option is to use a <code>&lt;template&gt;</code> tag with an id which you pass to the <code>template</code>
+            option.<br>
+            (These tags are not rendered on your website. They are only meant to be used in combination with
+            javascript.)
+        </p>
+        <pre><code class="html">&lt;template id=&quot;my-blog-post-template&quot;&gt;
+  &lt;div class=&quot;post&quot;&gt;
+    &lt;a href=&quot;${URL}&quot;&gt;${TITLE}&lt;/a&gt;&lt;br&gt;
+    ${Payout}, ${UPVOTES} Upvotes, ${COMMENTS} Comments
+  &lt;/div&gt;
+&lt;/template&gt;
 
-					<header class="major">
-						<h2>Elements</h2>
-					</header>
+&lt;script&gt;
+  steemitWidgets.blog({
+    element: 'my-blog',
+    user: 'your-username',
+    template: 'my-blog-post-template'
+  });
+&lt;/script&gt;</code></pre>
+        <p>Read the next section to learn how to display posts from other feeds, like trending posts or posts from a
+            specific category, or your profile information and what placeholders you can use.</p>
+    </div>
+</section>
 
-					<section>
-						<h4>Text</h4>
-						<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-						This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-						This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-						<hr />
-						<header>
-							<h4>Heading with a Subtitle</h4>
-							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-						<header>
-							<h5>Heading with a Subtitle</h5>
-							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-						<hr />
-						<h2>Heading Level 2</h2>
-						<h3>Heading Level 3</h3>
-						<h4>Heading Level 4</h4>
-						<h5>Heading Level 5</h5>
-						<h6>Heading Level 6</h6>
-						<hr />
-						<h5>Blockquote</h5>
-						<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-						<h5>Preformatted</h5>
-						<pre><code>i = 0;
+<section id="options-placeholders" class="wrapper">
+    <header class="major">
+        <h2>Options and Placeholders</h2>
+    </header>
+    <div class="uk-container uk-container-center">
+        <p>
+            You can display user related content like blog, feed and profile information and you can display tag related
+            or general posts from the new, hot and trending feeds. Each have slightly different options and
+            placeholders.
+        </p>
+        <h3 id="options-profile">Profile</h3>
+        <pre><code class="javascript">steemitWidgets.profile(options);</code></pre>
+        <h4>Options</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>element</i></td>
+                    <td>Sets the html id of the element in which to show the content.</td>
+                    <td>String</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td><i>username</i></td>
+                    <td>Sets the steemit.com username whose profile to show.</td>
+                    <td>String</td>
+                    <td>mkt</td>
+                </tr>
+                <tr>
+                    <td><i>template</i></td>
+                    <td>Provides the HTML to display the profile. Can be either an HTML string or the ID of a <code>&lt;template&gt;</code>
+                        tag.
+                    </td>
+                    <td>String</td>
+                    <td><pre><code class="html">&lt;img width=&quot;100&quot; src=&quot;${IMAGE}&quot; /&gt;&lt;br&gt;
+&lt;a href=&quot;https://steemit.com/@${USER}&quot;&gt;@${USER}&lt;/a&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><i>reputationPrecision</i></td>
+                    <td>Sets the decimal precision for the reputation score.</td>
+                    <td>Integer</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><i>votingPowerPrecision</i></td>
+                    <td>Sets the decimal precision for the current voting power.</td>
+                    <td>Integer</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><i>updateInterval</i></td>
+                    <td>Sets the interval in seconds to update the output. Set to 0 to disable updates.</td>
+                    <td>Integer</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td><i>createdCallback</i></td>
+                    <td>Sets a callback function to handle the created date display, for example with moment.js.</td>
+                    <td>Function</td>
+                    <td><pre><code class="javascript">function () {
+    var monthNames = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ];
+    created = new Date(created);
+    return monthNames[created.getMonth()] + ' '
+         + created.getDate() + ', '
+         + created.getFullYear();
+}</code></pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4 class="uk-margin-large-top">Placeholders</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Placeholder</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>${USER}</i></td>
+                    <td>Outputs the username (without the @).</td>
+                </tr>
+                <tr>
+                    <td><i>${NAME}</i></td>
+                    <td>Outputs the alternative display name you can set in the steemit.com settings.</td>
+                </tr>
+                <tr>
+                    <td><i>${LOCATION}</i></td>
+                    <td>Outputs the users location.</td>
+                </tr>
+                <tr>
+                    <td><i>${WEBSITE}</i></td>
+                    <td>Outputs the users website url.</td>
+                </tr>
+                <tr>
+                    <td><i>${IMAGE}</i></td>
+                    <td>Outputs the users profile image url.</td>
+                </tr>
+                <tr>
+                    <td><i>${COVERIMAGE}</i></td>
+                    <td>Outputs the users cover image url.</td>
+                </tr>
+                <tr>
+                    <td><i>${REPUTATION}</i></td>
+                    <td>Outputs the users reputation.</td>
+                </tr>
+                <tr>
+                    <td><i>${VOTINGPOWER}</i></td>
+                    <td>Outputs the users actual current voting power.</td>
+                </tr>
+                <tr>
+                    <td><i>${FOLLOWERS}</i></td>
+                    <td>Outputs the number of followers the user has.</td>
+                </tr>
+                <tr>
+                    <td><i>${FOLLOWING}</i></td>
+                    <td>Outputs the number of users the user is following.</td>
+                </tr>
+                <tr>
+                    <td><i>${POSTCOUNT}</i></td>
+                    <td>Outputs the users overall post count.</td>
+                </tr>
+                <tr>
+                    <td><i>${ABOUT}</i></td>
+                    <td>Outputs the users about text.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-while (!deck.isInOrder()) {
-  print 'Iteration ' + i;
-  deck.shuffle();
-  i++;
-}
+        <h3 id="options-ticker">Ticker</h3>
+        <p>Source: <a href="https://coinmarketcap.com">coinmarketcap.com</a>. (Updated every 5 minutes.)</p>
+        <pre><code class="javascript">steemitWidgets.ticker(options);</code></pre>
+        <h4>Options</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>element</i></td>
+                    <td>Sets the html id of the element in which to show the content.</td>
+                    <td>String</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td><i>currency</i></td>
+                    <td>Sets the currency.</td>
+                    <td>String</td>
+                    <td>steem</td>
+                </tr>
+                <tr>
+                    <td><i>template</i></td>
+                    <td>Provides the HTML to display the ticker. Can be either an HTML string or the ID of a <code>&lt;template&gt;</code>
+                        tag.
+                    </td>
+                    <td>String</td>
+                    <td><pre><code class="html">&lt;h3&gt;${NAME} &lt;small&gt;(${SYMBOL})&lt;/small&gt;&lt;/h3&gt;
+&lt;p&gt;
+    USD: ${PRICE_USD}&lt;br&gt;
+    BTC: ${PRICE_BTC}
+&lt;/p&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><i>priceBTCPrecision</i></td>
+                    <td>Sets the decimal precision for the BTC price.</td>
+                    <td>Integer</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td><i>priceUSDPrecision</i></td>
+                    <td>Sets the decimal precision for the USD price.</td>
+                    <td>Integer</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><i>updateInterval</i></td>
+                    <td>Sets the interval in seconds to update the output. Set to 0 to disable updates.</td>
+                    <td>Integer</td>
+                    <td>300</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4>Placeholders</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Placeholder</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>${ID}</i></td>
+                    <td>Outputs the ID.</td>
+                </tr>
+                <tr>
+                    <td><i>${NAME}</i></td>
+                    <td>Outputs the name.</td>
+                </tr>
+                <tr>
+                    <td><i>${RANK}</i></td>
+                    <td>Outputs the current rank.</td>
+                </tr>
+                <tr>
+                    <td><i>${SYMBOL}</i></td>
+                    <td>Outputs the currency symbol.</td>
+                </tr>
+                <tr>
+                    <td><i>${IMAGE}</i></td>
+                    <td>Outputs the url to an logo image.</td>
+                </tr>
+                <tr>
+                    <td><i>${24H_VOLUME_USD}</i></td>
+                    <td>Outputs trading volume for the last 24 hours.</td>
+                </tr>
+                <tr>
+                    <td><i>${AVAILABLE_SUPPLY}</i></td>
+                    <td>Outputs the available token supply.</td>
+                </tr>
+                <tr>
+                    <td><i>${TOTAL_SUPPLY}</i></td>
+                    <td>Outputs the total token supply.</td>
+                </tr>
+                <tr>
+                    <td><i>${MARKET_CAP_USD}</i></td>
+                    <td>Outputs the market cap in USD.</td>
+                </tr>
+                <tr>
+                    <td><i>${PERCENT_CHANGE_1H}</i></td>
+                    <td>Outputs the price change percentage for the last hour in.</td>
+                </tr>
+                <tr>
+                    <td><i>${PERCENT_CHANGE_24H}</i></td>
+                    <td>Outputs the price change percentage for the last 24 hours in.</td>
+                </tr>
+                <tr>
+                    <td><i>${PERCENT_CHANGE_7D}</i></td>
+                    <td>Outputs the price change percentage for the last seven days in.</td>
+                </tr>
+                <tr>
+                    <td><i>${PRICE_BTC}</i></td>
+                    <td>Outputs the current BTC price.</td>
+                </tr>
+                <tr>
+                    <td><i>${PRICE_USD}</i></td>
+                    <td>Outputs the current USD price.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-					</section>
+        <h3 id="options-blog-feed">Blog and Feed</h3>
+        <pre><code class="javascript">steemitWidgets.blog(options);
+steemitWidgets.feed(options);</code></pre>
+        <h4>Options</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>element</i></td>
+                    <td>Sets the html id of the element in which to show the content.</td>
+                    <td>String</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td><i>user</i></td>
+                    <td>Sets the steemit.com username whose blog/feed to show.</td>
+                    <td>String</td>
+                    <td>mkt</td>
+                </tr>
+                <tr>
+                    <td><i>limit</i></td>
+                    <td>Sets the number of posts to show.</td>
+                    <td>Integer</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><i>template</i></td>
+                    <td>Provides the HTML to display the posts. Can be either an HTML string or the ID of a <code>&lt;template&gt;</code>
+                        tag.
+                    </td>
+                    <td>String</td>
+                    <td><pre><code class="html">&lt;div&gt;
+    &lt;a href=&quot;${URL}&quot;&gt;${TITLE}&lt;/a&gt;${RESTEEMED}&lt;br&gt;
+    ${Payout}, ${UPVOTES} Upvotes, ${COMMENTS} Comments
+&lt;/div&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><i>defaultImage</i></td>
+                    <td>Sets the URL for a default image if there is no post image.</td>
+                    <td>String</td>
+                    <td>
+                        <a href="https://steemitimages.com/DQmXYX9hqSNcikTK8ARb61BPnTk4CKMhaiqr22iCKD8CKsp/steemit-logo.png">show</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><i>resteemedIndicator</i></td>
+                    <td>Sets the HTML displayed by <i>${RESTEEMED}</i> placeholder if a post was resteemed.</td>
+                    <td>String</td>
+                    <td> (resteemed)</td>
+                </tr>
+                <tr>
+                    <td><i>payoutPrecision</i></td>
+                    <td>Sets the decimal precision for the payout amount.</td>
+                    <td>Integer</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><i>reputationPrecision</i></td>
+                    <td>Sets the decimal precision for the reputation scores.</td>
+                    <td>Integer</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><i>dateCallback</i></td>
+                    <td>Sets a callback function to handle the date display, for example with <a
+                            href="https://momentjs.com">moment.js</a>.
+                    </td>
+                    <td>Function</td>
+                    <td><pre><code class="javascript">function (date) {
+    return date;
+}</code></pre></td>
+                </tr>
+                <tr>
+                    <td><i>updateInterval</i></td>
+                    <td>Sets the interval in seconds to update the output. Set to 0 to disable updates.</td>
+                    <td>Integer</td>
+                    <td>60</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4>Placeholders</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Placeholder</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>${URL}</i></td>
+                    <td>Outputs the post url.</td>
+                </tr>
+                <tr>
+                    <td><i>${TITLE}</i></td>
+                    <td>Outputs the post's title.</td>
+                </tr>
+                <tr>
+                    <td><i>${AUTHOR}</i></td>
+                    <td>Outputs the author's username.</td>
+                </tr>
+                <tr>
+                    <td><i>${RESTEEMED}</i></td>
+                    <td>Outputs the HTML provided in the <code>resteemedIndicator</code> option when a post was
+                        resteemed.
+                    </td>
+                </tr>
+                <tr>
+                    <td><i>${RESTEEMEDBY}</i></td>
+                    <td>Outputs the username (prefixed with "resteemed by") of the user who resteemed this post.</td>
+                </tr>
+                <tr>
+                    <td><i>${DATE}</i></td>
+                    <td>Outputs the post's creation date. Can be customized using the <code>dateCallback</code> option.
+                    </td>
+                </tr>
+                <tr>
+                    <td><i>${IMAGE}</i></td>
+                    <td>Outputs the post's image url.</td>
+                </tr>
+                <tr>
+                    <td><i>${PAYOUT}</i></td>
+                    <td>Outputs the full pending or past payout amount.</td>
+                </tr>
+                <tr>
+                    <td><i>${REPUTATION}</i></td>
+                    <td>Outputs the users reputation.</td>
+                </tr>
+                <tr>
+                    <td><i>${COMMENTS}</i></td>
+                    <td>Outputs the number of comments on the post.</td>
+                </tr>
+                <tr>
+                    <td><i>${UPVOTES}</i></td>
+                    <td>Outputs the number of upvotes the post has received.</td>
+                </tr>
+                <tr>
+                    <td><i>${CATEGORY}</i></td>
+                    <td>Outputs the post's category (first tag).</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-					<section>
-						<h4>Lists</h4>
-						<div class="row">
-							<div class="6u 12u$(medium)">
-								<h5>Unordered</h5>
-								<ul>
-									<li>Dolor pulvinar etiam.</li>
-									<li>Sagittis adipiscing.</li>
-									<li>Felis enim feugiat.</li>
-								</ul>
-								<h5>Alternate</h5>
-								<ul class="alt">
-									<li>Dolor pulvinar etiam.</li>
-									<li>Sagittis adipiscing.</li>
-									<li>Felis enim feugiat.</li>
-								</ul>
-							</div>
-							<div class="6u$ 12u$(medium)">
-								<h5>Ordered</h5>
-								<ol>
-									<li>Dolor pulvinar etiam.</li>
-									<li>Etiam vel felis viverra.</li>
-									<li>Felis enim feugiat.</li>
-									<li>Dolor pulvinar etiam.</li>
-									<li>Etiam vel felis lorem.</li>
-									<li>Felis enim et feugiat.</li>
-								</ol>
-								<h5>Icons</h5>
-								<ul class="icons">
-									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-								</ul>
-							</div>
-						</div>
-						<h5>Actions</h5>
-						<div class="row">
-							<div class="6u 12u$(medium)">
-								<ul class="actions">
-									<li><a href="#" class="button special">Default</a></li>
-									<li><a href="#" class="button">Default</a></li>
-								</ul>
-								<ul class="actions small">
-									<li><a href="#" class="button special small">Small</a></li>
-									<li><a href="#" class="button small">Small</a></li>
-								</ul>
-								<ul class="actions vertical">
-									<li><a href="#" class="button special">Default</a></li>
-									<li><a href="#" class="button">Default</a></li>
-								</ul>
-								<ul class="actions vertical small">
-									<li><a href="#" class="button special small">Small</a></li>
-									<li><a href="#" class="button small">Small</a></li>
-								</ul>
-							</div>
-							<div class="6u 12u$(medium)">
-								<ul class="actions vertical">
-									<li><a href="#" class="button special fit">Default</a></li>
-									<li><a href="#" class="button fit">Default</a></li>
-								</ul>
-								<ul class="actions vertical small">
-									<li><a href="#" class="button special small fit">Small</a></li>
-									<li><a href="#" class="button small fit">Small</a></li>
-								</ul>
-							</div>
-						</div>
-					</section>
+        <h3 id="options-new-hot-trending">New, Hot and Trending</h3>
+        <pre><code class="javascript">steemitWidgets.new(options);
+steemitWidgets.hot(options);
+steemitWidgets.trending(options);</code></pre>
+        <h4>Options</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>element</i></td>
+                    <td>Sets the html id of the element in which to show the content.</td>
+                    <td>String</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td><i>tag</i></td>
+                    <td>Sets the tag for which to show posts. By default no tag is set and all posts will be shown.</td>
+                    <td>String</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td><i>limit</i></td>
+                    <td>Sets the number of posts to show.</td>
+                    <td>Integer</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><i>template</i></td>
+                    <td>Provides the HTML to display the posts. Can be either an HTML string or the ID of a <code>&lt;template&gt;</code>
+                        tag.
+                    </td>
+                    <td>String</td>
+                    <td><pre><code class="html">&lt;div&gt;
+    &lt;a href=&quot;${URL}&quot;&gt;${TITLE}&lt;/a&gt;&lt;br&gt;
+    ${Payout}, ${UPVOTES} Upvotes, ${COMMENTS} Comments
+&lt;/div&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><i>defaultImage</i></td>
+                    <td>Sets the URL for a default image if there is no post image.</td>
+                    <td>String</td>
+                    <td>
+                        <a href="https://steemitimages.com/DQmXYX9hqSNcikTK8ARb61BPnTk4CKMhaiqr22iCKD8CKsp/steemit-logo.png">show</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><i>payoutPrecision</i></td>
+                    <td>Sets the decimal precision for the payout amount.</td>
+                    <td>Integer</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><i>reputationPrecision</i></td>
+                    <td>Sets the decimal precision for the reputation scores.</td>
+                    <td>Integer</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><i>dateCallback</i></td>
+                    <td>Sets a callback function to handle the date display, for example with <a
+                            href="https://momentjs.com">moment.js</a>.
+                    </td>
+                    <td>Function</td>
+                    <td><pre><code class="javascript">function (date) {
+    return date;
+}</code></pre></td>
+                </tr>
+                <tr>
+                    <td><i>updateInterval</i></td>
+                    <td>Sets the interval in seconds to update the output. Set to 0 to disable updates.</td>
+                    <td>Integer</td>
+                    <td>60</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4>Placeholders</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Placeholder</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>${URL}</i></td>
+                    <td>Outputs the post url.</td>
+                </tr>
+                <tr>
+                    <td><i>${TITLE}</i></td>
+                    <td>Outputs the post's title.</td>
+                </tr>
+                <tr>
+                    <td><i>${AUTHOR}</i></td>
+                    <td>Outputs the author's username.</td>
+                </tr>
+                <tr>
+                    <td><i>${DATE}</i></td>
+                    <td>Outputs the post's creation date. Can be customized using the <code>dateCallback</code> option.
+                    </td>
+                </tr>
+                <tr>
+                    <td><i>${IMAGE}</i></td>
+                    <td>Outputs the post's image url.</td>
+                </tr>
+                <tr>
+                    <td><i>${PAYOUT}</i></td>
+                    <td>Outputs the full pending or past payout amount.</td>
+                </tr>
+                <tr>
+                    <td><i>${REPUTATION}</i></td>
+                    <td>Outputs the users reputation.</td>
+                </tr>
+                <tr>
+                    <td><i>${COMMENTS}</i></td>
+                    <td>Outputs the number of comments on the post.</td>
+                </tr>
+                <tr>
+                    <td><i>${UPVOTES}</i></td>
+                    <td>Outputs the number of upvotes the post has received.</td>
+                </tr>
+                <tr>
+                    <td><i>${CATEGORY}</i></td>
+                    <td>Outputs the post's category (first tag).</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-					<section>
-						<h4>Table</h4>
-						<h5>Default</h5>
-						<div class="table-wrapper">
-							<table>
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Item One</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Two</td>
-										<td>Vis ac commodo adipiscing arcu aliquet.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Three</td>
-										<td> Morbi faucibus arcu accumsan lorem.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Four</td>
-										<td>Vitae integer tempus condimentum.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Five</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="2"></td>
-										<td>100.00</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
+        <h3 id="options-full-post">Full Post</h3>
+        <pre><code class="javascript">steemitWidgets.fullPost(options);</code></pre>
+        <h4>Options</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>element</i></td>
+                    <td>Sets the html id of the element in which to show the content.</td>
+                    <td>String</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td><i>author</i></td>
+                    <td>Sets the author of the post.</td>
+                    <td>String</td>
+                    <td>mkt</td>
+                </tr>
+                <tr>
+                    <td><i>permlink</i></td>
+                    <td>Sets the permlink of the post.</td>
+                    <td>String</td>
+                    <td>steemit-widgets-full-post-widget</td>
+                </tr>
+                <tr>
+                    <td><i>template</i></td>
+                    <td>Provides the HTML to display the posts. Can be either an HTML string or the ID of a <code>&lt;template&gt;</code>
+                        tag.
+                    </td>
+                    <td>String</td>
+                    <td><pre><code class="html">&lt;div&gt; &lt;a href=&quot;${URL}&quot;&gt;${TITLE}&lt;/a&gt;&lt;br&gt; ${Payout}, ${UPVOTES} Upvotes, ${COMMENTS} Comments &lt;p&gt;${BODY}&lt;/p&gt; &lt;/div&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><i>payoutPrecision</i></td>
+                    <td>Sets the decimal precision for the payout amount.</td>
+                    <td>Integer</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><i>reputationPrecision</i></td>
+                    <td>Sets the decimal precision for the reputation scores.</td>
+                    <td>Integer</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><i>dateCallback</i></td>
+                    <td>Sets a callback function to handle the date display, for example with <a
+                            href="https://momentjs.com">moment.js</a>.
+                    </td>
+                    <td>Function</td>
+                    <td><pre><code class="javascript">function (date) {
+    return date;
+}</code></pre></td>
+                </tr>
+                <tr>
+                    <td><i>bodyCallback</i></td>
+                    <td>Sets a callback function to handle the body display, for example with <a
+                            href="https://github.com/jonschlinkert/remarkable">remarkable</a>.
+                    </td>
+                    <td>Function</td>
+                    <td><pre><code class="javascript">function (body) {
+    return body;
+}</code></pre></td>
+                </tr>
+                <tr>
+                    <td><i>tagsCallback</i></td>
+                    <td>Sets a callback function to handle the tags display.</td>
+                    <td>Function</td>
+                    <td><pre><code class="javascript">function (tags) {
+    let tagsHtml = '',
+        i;
+    for (i = 0; i < tags.length; i++) {
+      tagsHtml += '&lt;a href=&quot;https://steemit.com/trending/' + tags[i] + '&quot;&gt;' + tags[i] + '&lt;/a&gt;';
+    }
+    return '&lt;div class=&quot;steemit-full-post-tags&quot;&gt;' + tagsHtml + '&lt;/div&gt;';
+}</code></pre></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4>Placeholders</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Placeholder</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><i>${URL}</i></td>
+                    <td>Outputs the post url.</td>
+                </tr>
+                <tr>
+                    <td><i>${TITLE}</i></td>
+                    <td>Outputs the post's title.</td>
+                </tr>
+                <tr>
+                    <td><i>${AUTHOR}</i></td>
+                    <td>Outputs the author's username.</td>
+                </tr>
+                <tr>
+                    <td><i>${DATE}</i></td>
+                    <td>Outputs the post's creation date. Can be customized using the <code>dateCallback</code> option.
+                    </td>
+                </tr>
+                <tr>
+                    <td><i>${BODY}</i></td>
+                    <td>Outputs the post's body.  Can be customized using the <code>bodyCallback</code> option.</td>
+                </tr>
+                <tr>
+                    <td><i>${PAYOUT}</i></td>
+                    <td>Outputs the full pending or past payout amount.</td>
+                </tr>
+                <tr>
+                    <td><i>${REPUTATION}</i></td>
+                    <td>Outputs the users reputation.</td>
+                </tr>
+                <tr>
+                    <td><i>${COMMENTS}</i></td>
+                    <td>Outputs the number of comments on the post.</td>
+                </tr>
+                <tr>
+                    <td><i>${UPVOTES}</i></td>
+                    <td>Outputs the number of upvotes the post has received.</td>
+                </tr>
+                <tr>
+                    <td><i>${CATEGORY}</i></td>
+                    <td>Outputs the post's category (first tag).</td>
+                </tr>
+                <tr>
+                    <td><i>${TAGS}</i></td>
+                    <td>Outputs the post's tags (links).  Can be customized using the <code>tagsCallback</code> option.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 
-						<h5>Alternate</h5>
-						<div class="table-wrapper">
-							<table class="alt">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Item One</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Two</td>
-										<td>Vis ac commodo adipiscing arcu aliquet.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Three</td>
-										<td> Morbi faucibus arcu accumsan lorem.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Four</td>
-										<td>Vitae integer tempus condimentum.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Five</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="2"></td>
-										<td>100.00</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-					</section>
+<section id="formatting-post-dates" class="wrapper">
+    <header class="major">
+        <h2>Formatting Post Dates</h2>
+    </header>
+    <div class="uk-container uk-container-center">
+        <p>
+            If you want to format the post dates you can use the <code>dateCallback</code> option. Here is an example of
+            how to display realtive times like "1 hour ago" like on steemit.com with <a href="https://momentjs.com">moment.js</a>.
+        </p>
+        <pre><code class="html">&lt;script src=&quot;https://cdn.steemjs.com/lib/latest/steem.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://mktcode.github.io/steemit-widgets/assets/js/steemit-widgets.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  steemitWidgets.blog({
+    element: 'my-blog',
+    user: 'your-username',
+    dateCallback: function (date) {
+      return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+    }
+  });
+&lt;/script&gt;</code></pre>
+        <p>
+            You have to be careful because javascript works with your local time which might be different from what
+            steemit.com shows.
+            The above example takes care of this by converting dates to UTC.
+        </p>
+    </div>
+</section>
 
-					<section>
-						<h4>Buttons</h4>
-						<ul class="actions">
-							<li><a href="#" class="button special">Special</a></li>
-							<li><a href="#" class="button">Default</a></li>
-						</ul>
-						<ul class="actions">
-							<li><a href="#" class="button big">Big</a></li>
-							<li><a href="#" class="button">Default</a></li>
-							<li><a href="#" class="button small">Small</a></li>
-						</ul>
-						<ul class="actions fit">
-							<li><a href="#" class="button fit">Fit</a></li>
-							<li><a href="#" class="button special fit">Fit</a></li>
-							<li><a href="#" class="button fit">Fit</a></li>
-						</ul>
-						<ul class="actions fit small">
-							<li><a href="#" class="button special fit small">Fit + Small</a></li>
-							<li><a href="#" class="button fit small">Fit + Small</a></li>
-							<li><a href="#" class="button special fit small">Fit + Small</a></li>
-						</ul>
-						<ul class="actions">
-							<li><a href="#" class="button special icon fa-download">Icon</a></li>
-							<li><a href="#" class="button icon fa-download">Icon</a></li>
-						</ul>
-						<ul class="actions">
-							<li><span class="button special disabled">Disabled</span></li>
-							<li><span class="button disabled">Disabled</span></li>
-						</ul>
-					</section>
+<section id="jquery-usage" class="wrapper">
+    <header class="major">
+        <h2>jQuery Usage</h2>
+    </header>
+    <div class="uk-container uk-container-center">
+        <p>
+            If your website uses jQuery you can use the built-in jQuery syntax.
+        </p>
+        <pre><code class="html">&lt;script src=&quot;https://code.jquery.com/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.steemjs.com/lib/latest/steem.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://mktcode.github.io/steemit-widgets/assets/js/steemit-widgets.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  $('#my-profile').steemitProfile({user: 'your-username'});
+  $('#my-blog').steemitBlog({user: 'your-username'});
+  $('#my-feed').steemitFeed({user: 'your-username'});
+  $('#my-post').steemitFullPost({author: 'your-username', permlink: 'your-posts-permlink'});
+  $('#new-posts').steemitNew();
+  $('#hot-posts').steemitHot();
+  $('#trending-posts').steemitTrending();
+&lt;/script&gt;</code></pre>
+        <p>
+            You can now omit the element option. Just make sure jQuery is included before the plugin.
+        </p>
+    </div>
+</section>
 
-					<section>
-						<h4>Form</h4>
-						<form method="post" action="#">
-							<div class="row uniform">
-								<div class="6u 12u$(xsmall)">
-									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-								</div>
-								<div class="6u$ 12u$(xsmall)">
-									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-								</div>
-								<div class="12u$">
-									<div class="select-wrapper">
-										<select name="demo-category" id="demo-category">
-											<option value="">- Category -</option>
-											<option value="1">Manufacturing</option>
-											<option value="1">Shipping</option>
-											<option value="1">Administration</option>
-											<option value="1">Human Resources</option>
-										</select>
-									</div>
-								</div>
-								<div class="4u 12u$(small)">
-									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-									<label for="demo-priority-low">Low</label>
-								</div>
-								<div class="4u 12u$(small)">
-									<input type="radio" id="demo-priority-normal" name="demo-priority">
-									<label for="demo-priority-normal">Normal</label>
-								</div>
-								<div class="4u$ 12u$(small)">
-									<input type="radio" id="demo-priority-high" name="demo-priority">
-									<label for="demo-priority-high">High</label>
-								</div>
-								<div class="6u 12u$(small)">
-									<input type="checkbox" id="demo-copy" name="demo-copy">
-									<label for="demo-copy">Email me a copy</label>
-								</div>
-								<div class="6u$ 12u$(small)">
-									<input type="checkbox" id="demo-human" name="demo-human" checked>
-									<label for="demo-human">Not a robot</label>
-								</div>
-								<div class="12u$">
-									<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-								</div>
-								<div class="12u$">
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="special" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</div>
-							</div>
-						</form>
-					</section>
+<!-- Footer -->
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="https://github.com/mktcode/steemit-widgets" class="icon fa-github"><span
+                class="label">GitHub</span></a></li>
+    </ul>
+    <p>
+        <i class="uk-icon-btc"></i> BTC Address:</b><br>
+        <a href="#btc-address" data-uk-modal>1As6a92KhKHVwgCV7U8zjVovB5NAAHnbTX</a>
+    </p>
+    <div id="btc-address" class="uk-modal">
+        <div class="uk-modal-dialog" style="width: 330px;">
+            <a class="uk-modal-close uk-close"></a>
+            <img src="https://blockchain.info/qr?data=1As6a92KhKHVwgCV7U8zjVovB5NAAHnbTX&size=200" alt=""
+                 class="uk-width-1-1"/><br>
+            <sup class="uk-text-small">1As6a92KhKHVwgCV7U8zjVovB5NAAHnbTX</sup>
+        </div>
+    </div>
+    <p class="copyright">Plugin created by <a href="https://steemit.com/@mkt">@mkt</a>.<br>Template "Fractal" by: <a
+            href="http://html5up.net">HTML5 UP</a></p>
+</footer>
 
-					<section>
-						<h4>Image</h4>
-						<h5>Fit</h5>
-						<div class="box alt">
-							<div class="row uniform">
-								<div class="12u"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-							</div>
-						</div>
-						<h5>Left &amp; Right</h5>
-						<p><span class="image left"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						<p><span class="image right"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-					</section>
+<!-- Demo Templates -->
+<template id="steemit-profile-template">
+    <article class="uk-comment">
+        <header class="uk-comment-header uk-text-left"
+                style="background: url(${COVERIMAGE}) center center; background-size: cover;">
+            <div class="uk-comment-avatar"
+                 style="background: url(${IMAGE}) center center; background-size: cover; width: 50px; height: 50px; border-radius: 36px;"></div>
+            <h4 class="uk-comment-title"><a href="https://steemit.com/@${USER}">@${USER}</a>
+                <div class="uk-badge uk-badge-notification">${REPUTATION}</div>
+            </h4>
+            <div class="uk-comment-meta"><a href="${WEBSITE}">${WEBSITE}</a><br>${ABOUT}</div>
+        </header>
+        <div class="uk-comment-body">
+            <div class="uk-grid">
+                <div class="uk-width-1-3"><b>${POSTCOUNT}</b><br><sup>Posts</sup></div>
+                <div class="uk-width-1-3"><b>${FOLLOWERS}</b><br><sup>Followers</sup></div>
+                <div class="uk-width-1-3"><b>${FOLLOWING}</b><br><sup>Following</sup></div>
+                <div class="uk-width-1-2 uk-text-small uk-text-left">Voting Power: ${VOTINGPOWER} %</div>
+                <div class="uk-width-1-2 uk-text-small uk-text-right"><i class="uk-icon-map-marker"></i> ${LOCATION}
+                </div>
+            </div>
+        </div>
+    </article>
+</template>
 
-				</div>
-			</section>
-		-->
+<template id="steemit-ticker-template">
+    <article class="uk-comment">
+        <header class="uk-comment-header uk-text-left">
+            <div class="uk-comment-avatar"
+                 style="background: url(${IMAGE}) center center; background-size: cover; width: 50px; height: 50px;"></div>
+            <h4 class="uk-comment-title">
+                <div class="uk-badge uk-badge-notification">#${RANK}</div>
+                <a href="https://coinmarketcap.com/currencies/${ID}">${NAME} <small>(${SYMBOL})</small></a>
+                ${PERCENT_CHANGE_24H}
+            </h4>
+            <div class="uk-comment-meta">Market Cap: $ ${MARKET_CAP_USD}</div>
+        </header>
+        <div class="uk-comment-body">
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-2 uk-margin-top uk-margin-bottom"><b><i class="uk-icon-dollar"></i> ${PRICE_USD}</b></div>
+                <div class="uk-width-medium-1-2 uk-margin-top uk-margin-bottom"><b><i class="uk-icon-bitcoin"></i> ${PRICE_BTC}</b></div>
+                <div class="uk-width-1-3 uk-margin-small-bottom uk-text-small">1h: ${PERCENT_CHANGE_1H}</div>
+                <div class="uk-width-1-3 uk-margin-small-bottom uk-text-small">24h: ${PERCENT_CHANGE_24H}</div>
+                <div class="uk-width-1-3 uk-margin-small-bottom uk-text-small">7d: ${PERCENT_CHANGE_7D}</div>
+            </div>
+        </div>
+    </article>
+</template>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-				</ul>
-				<p class="copyright">&copy; Untitled. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
-			</footer>
+<template id="steemit-blog-template">
+    <div class="uk-width-medium-1-3">
+        <div class="steemit-post uk-margin-bottom">
+            <article class="uk-comment">
+                <header class="uk-comment-header uk-text-left">
+                    <div class="uk-comment-avatar" style="background-image: url(${IMAGE});"></div>
+                    <h4 class="uk-comment-title uk-text-truncate"><a href="${URL}">${RESTEEMED} ${TITLE}</a></h4>
+                    <div class="uk-comment-meta">
+                        ${DATE} by <a href="https://steemit.com/@${AUTHOR}">${AUTHOR}</a> in <a
+                            href="https://steemit.com/trending/${CATEGORY}">${CATEGORY}</a>
+                    </div>
+                </header>
+                <a href="${URL}" class="steemit-post-image" style="background-image: url(${IMAGE});"></a>
+                <div class="uk-comment-body">
+                    <div class="uk-grid">
+                        <div class="uk-width-1-3"><i class="uk-icon-thumbs-o-up"></i> ${UPVOTES}</div>
+                        <div class="uk-width-1-3"><i class="uk-icon-comments"></i> ${COMMENTS}</div>
+                        <div class="uk-width-1-3"><i class="uk-icon-dollar"></i> ${PAYOUT}</div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</template>
+</template>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+<template id="steemit-feed-template">
+    <div class="uk-width-medium-1-3">
+        <div class="steemit-post uk-margin-bottom">
+            <article class="uk-comment">
+                <header class="uk-comment-header uk-text-left">
+                    <div class="uk-comment-avatar" style="background-image: url(${IMAGE});"></div>
+                    <h4 class="uk-comment-title uk-text-truncate"><a href="${URL}">${RESTEEMED} ${TITLE}</a></h4>
+                    <div class="uk-comment-meta">
+                        ${DATE} by <a href="https://steemit.com/@${AUTHOR}">${AUTHOR}</a> in <a
+                            href="https://steemit.com/trending/${CATEGORY}">${CATEGORY}</a><br>
+                        ${RESTEEMEDBY}
+                    </div>
+                </header>
+                <a href="${URL}" class="steemit-post-image" style="background-image: url(${IMAGE});"></a>
+                <div class="uk-comment-body">
+                    <div class="uk-grid">
+                        <div class="uk-width-1-3"><i class="uk-icon-thumbs-o-up"></i> ${UPVOTES}</div>
+                        <div class="uk-width-1-3"><i class="uk-icon-comments"></i> ${COMMENTS}</div>
+                        <div class="uk-width-1-3"><i class="uk-icon-dollar"></i> ${PAYOUT}</div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</template>
 
-	</body>
+<template id="steemit-post-template">
+    <div class="steemit-post uk-margin-bottom">
+        <article class="uk-comment">
+            <header class="uk-comment-header uk-text-left">
+                <div class="uk-comment-avatar" style="background-image: url(${IMAGE});"></div>
+                <h4 class="uk-comment-title uk-text-truncate"><a href="${URL}">${TITLE}</a></h4>
+                <div class="uk-comment-meta">
+                    ${DATE} by <a href="https://steemit.com/@${AUTHOR}">${AUTHOR}</a> in <a
+                        href="https://steemit.com/trending/${CATEGORY}">${CATEGORY}</a>
+                </div>
+            </header>
+            <a href="${URL}" class="steemit-post-image" style="background-image: url(${IMAGE});"></a>
+            <div class="uk-comment-body">
+                <div class="uk-grid">
+                    <div class="uk-width-1-3"><i class="uk-icon-thumbs-o-up"></i> ${UPVOTES}</div>
+                    <div class="uk-width-1-3"><i class="uk-icon-comments"></i> ${COMMENTS}</div>
+                    <div class="uk-width-1-3"><i class="uk-icon-dollar"></i> ${PAYOUT}</div>
+                </div>
+            </div>
+        </article>
+    </div>
+</template>
+
+<template id="steemit-full-post-template">
+    <div class="steemit-full-post uk-margin-bottom">
+        <article class="uk-article uk-text-left">
+            <h1 class="uk-article-title uk-margin-bottom-remove">
+                <a href="${URL}">
+                    ${TITLE}
+                </a>
+            </h1>
+            <p class="uk-article-meta uk-margin-small-bottom">
+                ${DATE} by <a href="https://steemit.com/@" target="_blank">${AUTHOR}</a> <span class="uk-badge uk-badge-notification uk-text-small">${REPUTATION}</span> in <a href="https://steemit.com/trending/${CATEGORY}">${CATEGORY}</a>
+                <i class="uk-icon-thumbs-o-up uk-margin-small-left"></i> ${UPVOTES} <i class="uk-icon-comments uk-margin-small-left"></i> ${COMMENTS} <i class="uk-icon-dollar uk-margin-small-left"></i> ${PAYOUT}
+            </p>
+            <div class="uk-margin-small-bottom">${TAGS}</div>
+            ${BODY}
+        </article>
+    </div>
+</template>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]>
+<script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+
+<script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+<script src="https://mktcode.github.io/steemit-widgets/assets/js/steemit-widgets.min.js"></script>
+<script>
+    $(function () {
+        hljs.configure({style: 'github'});
+        hljs.initHighlightingOnLoad();
+        $('#steemit-profile').steemitProfile({
+            template: 'steemit-profile-template',
+            reputationPrecision: 1
+        });
+        $('#steemit-ticker').steemitTicker({
+            template: 'steemit-ticker-template'
+        });
+        $('#steemit-blog').steemitBlog({
+            template: 'steemit-blog-template',
+            limit: 3,
+            resteemedIndicator: '<i class="uk-icon-refresh uk-text-success"></i> ',
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-feed').steemitFeed({
+            template: 'steemit-feed-template',
+            limit: 3,
+            resteemedIndicator: '<i class="uk-icon-refresh uk-text-success"></i> ',
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-new').steemitNew({
+            tag: 'steemdev',
+            template: 'steemit-post-template',
+            limit: 3,
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-hot').steemitHot({
+            tag: 'programming',
+            template: 'steemit-post-template',
+            limit: 3,
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-trending').steemitTrending({
+            template: 'steemit-post-template',
+            limit: 3,
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-full-post').steemitFullPost({
+            template: 'steemit-full-post-template',
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            },
+            bodyCallback: function (body) {
+                let remarkable = new Remarkable({
+                    html: true,
+                    breaks: true,
+                    linkify: true,
+                    typographer: false,
+                    quotes: '“”‘’'
+                });
+                body = remarkable.render(body);
+                body = body.replace(/([\s\n\r\t><(,])(@\w+\b)/gi, function (m1, m2, m3) {
+                    return m2 + '<a href="https://steemit.com/' + m3 + '">' + m3 + '</a>';
+                });
+                return body;
+            }
+        });
+    });
+</script>
+</body>
 </html>
