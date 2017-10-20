@@ -22,11 +22,11 @@ body {
 /* Default Link Color */
 
 a, .la-ball-triangle-path {
-    color:#d2b356;
+    color:#42c4f2;
 }
 
 a:hover, #header.nav-solid nav a:hover {
-    color:#d2b356;
+    color:#42c4f2;
 }
 
 /* Default Icon Color */
@@ -38,11 +38,11 @@ a:hover, #header.nav-solid nav a:hover {
 /* Border Color */
 
 #banner .section-heading:before, .testimonial.classic footer:before {
-    background: #d2b356;
+    background: #42c4f2;
 }
 
 .pricing-block-content:hover {
-    border-color:#d2b356;
+    border-color:#42c4f2;
 }
 
 
