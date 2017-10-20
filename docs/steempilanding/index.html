@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<!--
+  Fractal by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>SteemPi</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/uikit.almost-flat.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link rel="stylesheet" href="assets/css/custom.css"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
+    <link rel="icon" href="images/favicon.ico" />
+</head>
+<body id="top">
+
+<!-- Header -->
+<header id="header">
+    <div class="content">
+        
+        <center><h1><a href="#"></a></h1> <img src="./images/Steempi_tvbox_logo_white.png" /> </center>
+        <p>TV-box software  <br>for (Raspberry) Pi Single board computers.
+        
+</p>
+          <img src="./images/SteemPi_Raspberry_Pi_2_Line_draw2.png"/>
+        <ul class="actions">
+            <li><a href="https://github.com/mktcode/steemit-widgets/archive/master.zip" class="button icon fa-download">Download</a>
+            </li>             
+             <li><a href="generator.html" class="button special icon fa-magic">Website</a></li>
+          <br></br>
+          <a href="https://steemit.com/@techtek">SteemPi connects with the Steem Blockchain | SteemPi on steemit.com</a>
+    </div>
+</header>
+
+
+
+<!-- Footer -->
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="https://github.com/mktcode/steemit-widgets" class="icon fa-github"><span
+                class="label">GitHub</span></a></li>
+    </ul>
+    <p>
+        <i class="uk-icon-btc"></i> BTC Address:</b><br>
+        <a href="#btc-address" data-uk-modal>1As6a92KhKHVwgCV7U8zjVovB5NAAHnbTX</a>
+    </p>
+    <div id="btc-address" class="uk-modal">
+        <div class="uk-modal-dialog" style="width: 330px;">
+            <a class="uk-modal-close uk-close"></a>
+            <img src="https://blockchain.info/qr?data=1As6a92KhKHVwgCV7U8zjVovB5NAAHnbTX&size=200" alt=""
+                 class="uk-width-1-1"/><br>
+            <sup class="uk-text-small">1As6a92KhKHVwgCV7U8zjVovB5NAAHnbTX</sup>
+        </div>
+    </div>
+    <p class="copyright">SteemPi <a href="https://steemit.com/@techtekt">@techtek</a>.<br>Template "Fractal" by: <a
+            href="http://html5up.net">HTML5 UP</a></p>
+</footer>
+
+<!-- Demo Templates -->
+<template id="steemit-profile-template">
+    <article class="uk-comment">
+        <header class="uk-comment-header uk-text-left"
+                style="background: url(${COVERIMAGE}) center center; background-size: cover;">
+            <div class="uk-comment-avatar"
+                 style="background: url(${IMAGE}) center center; background-size: cover; width: 50px; height: 50px; border-radius: 36px;"></div>
+            <h4 class="uk-comment-title"><a href="https://steemit.com/@${USER}">@${USER}</a>
+                <div class="uk-badge uk-badge-notification">${REPUTATION}</div>
+            </h4>
+            <div class="uk-comment-meta"><a href="${WEBSITE}">${WEBSITE}</a><br>${ABOUT}</div>
+        </header>
+        <div class="uk-comment-body">
+            <div class="uk-grid">
+                <div class="uk-width-1-3"><b>${POSTCOUNT}</b><br><sup>Posts</sup></div>
+                <div class="uk-width-1-3"><b>${FOLLOWERS}</b><br><sup>Followers</sup></div>
+                <div class="uk-width-1-3"><b>${FOLLOWING}</b><br><sup>Following</sup></div>
+                <div class="uk-width-1-2 uk-text-small uk-text-left">Voting Power: ${VOTINGPOWER} %</div>
+                <div class="uk-width-1-2 uk-text-small uk-text-right"><i class="uk-icon-map-marker"></i> ${LOCATION}
+                </div>
+            </div>
+        </div>
+    </article>
+</template>
+
+<template id="steemit-ticker-template">
+    <article class="uk-comment">
+        <header class="uk-comment-header uk-text-left">
+            <div class="uk-comment-avatar"
+                 style="background: url(${IMAGE}) center center; background-size: cover; width: 50px; height: 50px;"></div>
+            <h4 class="uk-comment-title">
+                <div class="uk-badge uk-badge-notification">#${RANK}</div>
+                <a href="https://coinmarketcap.com/currencies/${ID}">${NAME} <small>(${SYMBOL})</small></a>
+                ${PERCENT_CHANGE_24H}
+            </h4>
+            <div class="uk-comment-meta">Market Cap: $ ${MARKET_CAP_USD}</div>
+        </header>
+        <div class="uk-comment-body">
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-2 uk-margin-top uk-margin-bottom"><b><i class="uk-icon-dollar"></i> ${PRICE_USD}</b></div>
+                <div class="uk-width-medium-1-2 uk-margin-top uk-margin-bottom"><b><i class="uk-icon-bitcoin"></i> ${PRICE_BTC}</b></div>
+                <div class="uk-width-1-3 uk-margin-small-bottom uk-text-small">1h: ${PERCENT_CHANGE_1H}</div>
+                <div class="uk-width-1-3 uk-margin-small-bottom uk-text-small">24h: ${PERCENT_CHANGE_24H}</div>
+                <div class="uk-width-1-3 uk-margin-small-bottom uk-text-small">7d: ${PERCENT_CHANGE_7D}</div>
+            </div>
+        </div>
+    </article>
+</template>
+
+<template id="steemit-blog-template">
+    <div class="uk-width-medium-1-3">
+        <div class="steemit-post uk-margin-bottom">
+            <article class="uk-comment">
+                <header class="uk-comment-header uk-text-left">
+                    <div class="uk-comment-avatar" style="background-image: url(${IMAGE});"></div>
+                    <h4 class="uk-comment-title uk-text-truncate"><a href="${URL}">${RESTEEMED} ${TITLE}</a></h4>
+                    <div class="uk-comment-meta">
+                        ${DATE} by <a href="https://steemit.com/@${AUTHOR}">${AUTHOR}</a> in <a
+                            href="https://steemit.com/trending/${CATEGORY}">${CATEGORY}</a>
+                    </div>
+                </header>
+                <a href="${URL}" class="steemit-post-image" style="background-image: url(${IMAGE});"></a>
+                <div class="uk-comment-body">
+                    <div class="uk-grid">
+                        <div class="uk-width-1-3"><i class="uk-icon-thumbs-o-up"></i> ${UPVOTES}</div>
+                        <div class="uk-width-1-3"><i class="uk-icon-comments"></i> ${COMMENTS}</div>
+                        <div class="uk-width-1-3"><i class="uk-icon-dollar"></i> ${PAYOUT}</div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</template>
+</template>
+
+<template id="steemit-feed-template">
+    <div class="uk-width-medium-1-3">
+        <div class="steemit-post uk-margin-bottom">
+            <article class="uk-comment">
+                <header class="uk-comment-header uk-text-left">
+                    <div class="uk-comment-avatar" style="background-image: url(${IMAGE});"></div>
+                    <h4 class="uk-comment-title uk-text-truncate"><a href="${URL}">${RESTEEMED} ${TITLE}</a></h4>
+                    <div class="uk-comment-meta">
+                        ${DATE} by <a href="https://steemit.com/@${AUTHOR}">${AUTHOR}</a> in <a
+                            href="https://steemit.com/trending/${CATEGORY}">${CATEGORY}</a><br>
+                        ${RESTEEMEDBY}
+                    </div>
+                </header>
+                <a href="${URL}" class="steemit-post-image" style="background-image: url(${IMAGE});"></a>
+                <div class="uk-comment-body">
+                    <div class="uk-grid">
+                        <div class="uk-width-1-3"><i class="uk-icon-thumbs-o-up"></i> ${UPVOTES}</div>
+                        <div class="uk-width-1-3"><i class="uk-icon-comments"></i> ${COMMENTS}</div>
+                        <div class="uk-width-1-3"><i class="uk-icon-dollar"></i> ${PAYOUT}</div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</template>
+
+<template id="steemit-post-template">
+    <div class="steemit-post uk-margin-bottom">
+        <article class="uk-comment">
+            <header class="uk-comment-header uk-text-left">
+                <div class="uk-comment-avatar" style="background-image: url(${IMAGE});"></div>
+                <h4 class="uk-comment-title uk-text-truncate"><a href="${URL}">${TITLE}</a></h4>
+                <div class="uk-comment-meta">
+                    ${DATE} by <a href="https://steemit.com/@${AUTHOR}">${AUTHOR}</a> in <a
+                        href="https://steemit.com/trending/${CATEGORY}">${CATEGORY}</a>
+                </div>
+            </header>
+            <a href="${URL}" class="steemit-post-image" style="background-image: url(${IMAGE});"></a>
+            <div class="uk-comment-body">
+                <div class="uk-grid">
+                    <div class="uk-width-1-3"><i class="uk-icon-thumbs-o-up"></i> ${UPVOTES}</div>
+                    <div class="uk-width-1-3"><i class="uk-icon-comments"></i> ${COMMENTS}</div>
+                    <div class="uk-width-1-3"><i class="uk-icon-dollar"></i> ${PAYOUT}</div>
+                </div>
+            </div>
+        </article>
+    </div>
+</template>
+
+<template id="steemit-full-post-template">
+    <div class="steemit-full-post uk-margin-bottom">
+        <article class="uk-article uk-text-left">
+            <h1 class="uk-article-title uk-margin-bottom-remove">
+                <a href="${URL}">
+                    ${TITLE}
+                </a>
+            </h1>
+            <p class="uk-article-meta uk-margin-small-bottom">
+                ${DATE} by <a href="https://steemit.com/@" target="_blank">${AUTHOR}</a> <span class="uk-badge uk-badge-notification uk-text-small">${REPUTATION}</span> in <a href="https://steemit.com/trending/${CATEGORY}">${CATEGORY}</a>
+                <i class="uk-icon-thumbs-o-up uk-margin-small-left"></i> ${UPVOTES} <i class="uk-icon-comments uk-margin-small-left"></i> ${COMMENTS} <i class="uk-icon-dollar uk-margin-small-left"></i> ${PAYOUT}
+            </p>
+            <div class="uk-margin-small-bottom">${TAGS}</div>
+            ${BODY}
+        </article>
+    </div>
+</template>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]>
+<script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+
+<script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+<script src="https://mktcode.github.io/steemit-widgets/assets/js/steemit-widgets.min.js"></script>
+<script>
+    $(function () {
+        hljs.configure({style: 'github'});
+        hljs.initHighlightingOnLoad();
+        $('#steemit-profile').steemitProfile({
+            template: 'steemit-profile-template',
+            reputationPrecision: 1
+        });
+        $('#steemit-ticker').steemitTicker({
+            template: 'steemit-ticker-template'
+        });
+        $('#steemit-blog').steemitBlog({
+            template: 'steemit-blog-template',
+            limit: 3,
+            resteemedIndicator: '<i class="uk-icon-refresh uk-text-success"></i> ',
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-feed').steemitFeed({
+            template: 'steemit-feed-template',
+            limit: 3,
+            resteemedIndicator: '<i class="uk-icon-refresh uk-text-success"></i> ',
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-new').steemitNew({
+            tag: 'steemdev',
+            template: 'steemit-post-template',
+            limit: 3,
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-hot').steemitHot({
+            tag: 'programming',
+            template: 'steemit-post-template',
+            limit: 3,
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-trending').steemitTrending({
+            template: 'steemit-post-template',
+            limit: 3,
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            }
+        });
+        $('#steemit-full-post').steemitFullPost({
+            template: 'steemit-full-post-template',
+            dateCallback: function (date) {
+                return moment.utc(date).from(moment.utc().format('YYYY-MM-DD HH:mm:ss'));
+            },
+            bodyCallback: function (body) {
+                let remarkable = new Remarkable({
+                    html: true,
+                    breaks: true,
+                    linkify: true,
+                    typographer: false,
+                    quotes: '“”‘’'
+                });
+                body = remarkable.render(body);
+                body = body.replace(/([\s\n\r\t><(,])(@\w+\b)/gi, function (m1, m2, m3) {
+                    return m2 + '<a href="https://steemit.com/' + m3 + '">' + m3 + '</a>';
+                });
+                return body;
+            }
+        });
+    });
+</script>
+</body>
+</html>
