@@ -83,13 +83,3 @@ Minimum requirements for Steemport, Android 2.3.3 (*Dependents on the Steemit Ap
 
 (An Android (TV) App made by the creators of that Steemit App will most likely work much better when compared to the ported Steemit Apps made with SteemPort.  When the creators of the Steemit apps release theire Apps for Android (TV), please download them instead.  Don't forget to give them support for these apps!)  
 
-Thanks @inquiringtimes for correcting the text of this post.
-
-The first Steemit apps ported with Steemport will be released soon!
-
-
-
-Previeus post:
-<center><h3><a href="https://steemit.com/steemdev/@techtek/steempi-v2-is-here">SteemPi v2 is here!</a></h3></center>
-
-<center><h3><a href="https://steemit.com/steempi/@techtek/steempi-is-now-listed-in-steemit-app-center">SteemPi is now listed in the SteemIt App Center.</a></h3></center>
